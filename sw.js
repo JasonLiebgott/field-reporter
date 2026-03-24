@@ -1,4 +1,4 @@
-const CACHE_NAME = 'smis-pwa-v1'
+const CACHE_NAME = 'smis-pwa-v2'
 const BASE_PATH = new URL(self.registration.scope).pathname
 const baseAsset = path => `${BASE_PATH}${path}`.replace(/\/+/g, '/')
 const APP_ASSETS = [
@@ -35,6 +35,29 @@ self.addEventListener('fetch', event => {
   if (requestUrl.protocol !== 'http:' && requestUrl.protocol !== 'https:') return
   if (requestUrl.origin !== self.location.origin) return
 
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          if (response && response.status === 200) {
+            const responseClone = response.clone()
+            caches.open(CACHE_NAME).then(cache => {
+              cache.put(event.request, responseClone)
+              cache.put(BASE_PATH, responseClone.clone())
+            })
+          }
+          return response
+        })
+        .catch(async () => {
+          const cachedPage = await caches.match(event.request)
+          if (cachedPage) return cachedPage
+
+          return caches.match(BASE_PATH)
+        })
+    )
+    return
+  }
+
   event.respondWith(
     caches.match(event.request).then(cached => {
       if (cached) return cached
@@ -52,9 +75,6 @@ self.addEventListener('fetch', event => {
           return response
         })
         .catch(() => {
-          if (event.request.mode === 'navigate') {
-            return caches.match(BASE_PATH)
-          }
           return new Response('Offline', { status: 503, statusText: 'Offline' })
         })
     })
