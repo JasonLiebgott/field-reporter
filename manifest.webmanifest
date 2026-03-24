@@ -1,0 +1,17 @@
+{
+  "name": "SMIS Field Reporter",
+  "short_name": "Field Reporter",
+  "description": "Create reports offline, save them locally, and later import them into the DOI Safety Management System (SMIS).",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#eef3f5",
+  "theme_color": "#12344d",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
