@@ -4,7 +4,8 @@ const baseAsset = path => `${BASE_PATH}${path}`.replace(/\/+/g, '/')
 const APP_ASSETS = [
   BASE_PATH,
   baseAsset('manifest.webmanifest'),
-  baseAsset('icons/icon.svg')
+  baseAsset('icons/icon.svg'),
+  baseAsset('images/body.png')
 ]
 
 self.addEventListener('install', event => {
