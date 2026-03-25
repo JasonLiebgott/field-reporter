@@ -1,9 +1,8 @@
-const CACHE_NAME = 'smis-pwa-v2'
+const CACHE_NAME = 'smis-pwa-v3'
 const BASE_PATH = new URL(self.registration.scope).pathname
 const baseAsset = path => `${BASE_PATH}${path}`.replace(/\/+/g, '/')
 const APP_ASSETS = [
   BASE_PATH,
-  baseAsset('manifest.webmanifest'),
   baseAsset('icons/icon.svg'),
   baseAsset('images/body.png')
 ]
