@@ -1,12 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">SMIS Field Reporter icon</title>
+  <desc id="desc">Two-tone blue shield with a gold accent for SMIS Field Reporter.</desc>
   <defs>
-    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
-      <stop offset="0%" stop-color="#12344d" />
-      <stop offset="100%" stop-color="#0f6b64" />
+    <linearGradient id="leftBlue" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#45a4da" />
+      <stop offset="100%" stop-color="#2a78b2" />
+    </linearGradient>
+    <linearGradient id="rightBlue" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#1b5a93" />
+      <stop offset="100%" stop-color="#12385e" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#f2c561" />
+      <stop offset="100%" stop-color="#c8912f" />
     </linearGradient>
   </defs>
-  <rect width="512" height="512" rx="112" fill="url(#bg)" />
-  <circle cx="256" cy="256" r="156" fill="#dff3ef" opacity="0.14" />
-  <path d="M172 324c15 20 42 34 84 34 53 0 88-23 88-58 0-29-19-45-66-56l-43-10c-23-5-33-12-33-25 0-18 19-29 48-29 31 0 53 11 73 31l39-47c-27-28-66-43-111-43-62 0-106 31-106 82 0 36 23 58 71 69l43 10c22 5 30 12 30 24 0 18-18 29-50 29-35 0-64-12-88-39z" fill="#dff3ef" />
-  <text x="256" y="432" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="700" fill="#dff3ef">SMIS</text>
+
+  <path
+    d="M256 42 414 94v142c0 116-67 194-158 234C165 430 98 352 98 236V94Z"
+    fill="#0d2d4a"
+  />
+  <path
+    d="M256 60 396 106v128c0 101-56 171-140 210V60Z"
+    fill="url(#rightBlue)"
+  />
+  <path
+    d="M256 60V444c-84-39-140-109-140-210V106Z"
+    fill="url(#leftBlue)"
+  />
+  <path
+    d="M255 108 255 390"
+    stroke="rgba(255,255,255,0.28)"
+    stroke-linecap="round"
+    stroke-width="8"
+  />
+  <path
+    d="M186 348c24 31 50 53 70 67 20-14 46-36 70-67-25 10-48 15-70 15s-45-5-70-15Z"
+    fill="url(#gold)"
+  />
+  <path
+    d="M168 114 256 86 344 114"
+    fill="none"
+    opacity="0.45"
+    stroke="rgba(255,255,255,0.34)"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="10"
+  />
 </svg>
