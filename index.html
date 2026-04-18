@@ -1,18 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#12344d" />
-    <meta name="description" content="SMIS Field Reporter for creating reports offline, saving them locally, and importing them later into SMIS." />
-    <link rel="manifest" href="/field-reporter/field-reporter.webmanifest" />
-    <link rel="icon" href="/field-reporter/icons/icon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/field-reporter/icons/icon.svg" />
-    <title>SMIS Field Reporter</title>
-    <script type="module" crossorigin src="/field-reporter/assets/index-BPWwYe2U.js"></script>
-    <link rel="stylesheet" crossorigin href="/field-reporter/assets/index-jKtODBMd.css">
-  </head>
-  <body>
-    <div id="app"></div>
-  </body>
-  </html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ODR Timer</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
+    <link rel="apple-touch-icon" href="icons/icon-192.svg">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="ODR Timer">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@14.0.0/dist/material-components-web.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="theme-color" content="#6200ee">
+</head>
+<body>
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+        <div class="mdc-top-app-bar__row">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                <span class="material-icons header-icon">timer</span>
+                <span class="mdc-top-app-bar__title">ODR Timer</span>
+            </section>
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                <button id="refresh-btn" class="mdc-icon-button" aria-label="Refresh" title="Refresh from saved data">
+                    <span class="material-icons">refresh</span>
+                </button>
+                <button id="timers-btn" class="mdc-tab mdc-tab--active" role="tab">
+                    <span class="mdc-tab__content">
+                        <span class="mdc-tab__text-label">Timers</span>
+                    </span>
+                </button>
+                <button id="available-btn" class="mdc-tab" role="tab">
+                    <span class="mdc-tab__content">
+                        <span class="mdc-tab__text-label">Available</span>
+                    </span>
+                </button>
+                <button id="setup-btn" class="mdc-tab" role="tab">
+                    <span class="mdc-tab__content">
+                        <span class="mdc-tab__text-label">Setup</span>
+                    </span>
+                </button>
+            </section>
+        </div>
+    </header>
+    <main class="mdc-top-app-bar--fixed-adjust">
+        <section id="timers-section" class="section active">
+            <div id="filter-buttons" class="mdc-chip-set mdc-chip-set--choice">
+                <!-- Filter buttons will be added here -->
+            </div>
+            <div id="timers-list">
+                <!-- Timers will be added here -->
+            </div>
+            <button id="add-timer-btn" class="mdc-fab mdc-fab--extended" aria-label="Add Timer">
+                <div class="mdc-fab__ripple"></div>
+                <span class="mdc-fab__icon material-icons">add</span>
+                <span class="mdc-fab__label">Add Timer</span>
+            </button>
+        </section>
+        <section id="available-section" class="section">
+            <div class="available-header">
+                <div>
+                    <h2 class="mdc-typography mdc-typography--headline5">Available Inventory</h2>
+                    <p class="setup-help">Items shown here do not currently have an active timer running.</p>
+                </div>
+            </div>
+            <div id="available-summary" class="available-summary"></div>
+            <div id="available-grid" class="available-grid"></div>
+        </section>
+        <section id="setup-section" class="section">
+            <div class="setup-section-grid">
+                <div class="setup-card">
+                    <div class="setup-card-header">
+                        <h2 class="mdc-typography mdc-typography--headline5">Rental Object Types</h2>
+                        <button id="add-object-type-btn" class="mdc-button mdc-button--raised">
+                            <span class="mdc-button__ripple"></span>
+                            <span class="mdc-button__label">Add Type</span>
+                        </button>
+                    </div>
+                    <p class="setup-help">Manage rental object types, filter visibility, and allowed duration presets.</p>
+                    <div id="object-types-list"></div>
+                </div>
+                <div class="setup-card">
+                    <div class="setup-card-header">
+                        <h2 class="mdc-typography mdc-typography--headline5">Inventory Items</h2>
+                        <button id="add-inventory-item-btn" class="mdc-button mdc-button--raised">
+                            <span class="mdc-button__ripple"></span>
+                            <span class="mdc-button__label">Add Item</span>
+                        </button>
+                    </div>
+                    <p class="setup-help">Add specific rental inventory like Canoe 2 or Bike 1 and assign it a type.</p>
+                    <div id="inventory-items-list"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://unpkg.com/material-components-web@14.0.0/dist/material-components-web.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
